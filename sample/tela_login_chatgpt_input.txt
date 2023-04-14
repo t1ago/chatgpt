@@ -1,0 +1,1076 @@
+Tiago Henrique Piantavinha
+Pode me ajudar a criar uma tela de login usando Swift com ViewCode
+
+Claro, eu posso te ajudar a criar uma tela de login usando Swift com ViewCode. Abaixo está um exemplo simples que você pode usar como ponto de partida:
+
+Crie um novo projeto no Xcode e selecione a opção "Single View App" como modelo.
+
+Abra o arquivo ViewController.swift e adicione o seguinte código:
+
+swift
+Copy code
+import UIKit
+
+class ViewController: UIViewController {
+    
+    let emailTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Email"
+        textField.borderStyle = .roundedRect
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    let passwordTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Senha"
+        textField.borderStyle = .roundedRect
+        textField.isSecureTextEntry = true
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    let loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Login", for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 5.0
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        
+        view.addSubview(emailTextField)
+        view.addSubview(passwordTextField)
+        view.addSubview(loginButton)
+        
+        NSLayoutConstraint.activate([
+            emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emailTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50),
+            emailTextField.widthAnchor.constraint(equalToConstant: 250),
+            emailTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
+            passwordTextField.widthAnchor.constraint(equalToConstant: 250),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
+            loginButton.widthAnchor.constraint(equalToConstant: 250),
+            loginButton.heightAnchor.constraint(equalToConstant: 40),
+        ])
+    }
+}
+Este código cria três elementos de interface do usuário: dois campos de texto (um para e-mail e outro para senha) e um botão de login. Os elementos são posicionados usando constraints.
+
+Abra o arquivo Main.storyboard e remova o ViewController padrão. Em seguida, clique em "File > New > File" e selecione a opção "Cocoa Touch Class". Nomeie a classe como "ViewCodeViewController" e certifique-se de que a opção "Subclass of" esteja definida como "UIViewController".
+
+Adicione o seguinte código ao arquivo ViewCodeViewController.swift:
+
+swift
+Copy code
+import UIKit
+
+class ViewCodeViewController: UIViewController {
+    
+    let emailTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Email"
+        textField.borderStyle = .roundedRect
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    let passwordTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Senha"
+        textField.borderStyle = .roundedRect
+        textField.isSecureTextEntry = true
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    let loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Login", for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 5.0
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .white
+        
+        view.addSubview(emailTextField)
+
+
+
+Tiago Henrique Piantavinha
+agora poderia validar o campo de Email para permitir apenas 150 caracteres e validar para permitir apenas e-mails validos
+Claro, aqui está o código para validar o campo de email para permitir apenas 150 caracteres e validar para permitir apenas e-mails válidos:
+
+swift
+Copy code
+import UIKit
+
+class ViewCodeViewController: UIViewController {
+    
+    let emailTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Email"
+        textField.borderStyle = .roundedRect
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    let passwordTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Senha"
+        textField.borderStyle = .roundedRect
+        textField.isSecureTextEntry = true
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    let loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Login", for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 5.0
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .white
+        
+        view.addSubview(emailTextField)
+        view.addSubview(passwordTextField)
+        view.addSubview(loginButton)
+        
+        NSLayoutConstraint.activate([
+            emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emailTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50),
+            emailTextField.widthAnchor.constraint(equalToConstant: 250),
+            emailTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
+            passwordTextField.widthAnchor.constraint(equalToConstant: 250),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
+            loginButton.widthAnchor.constraint(equalToConstant: 250),
+            loginButton.heightAnchor.constraint(equalToConstant: 40),
+        ])
+        
+        // Adicionando validação do campo de email
+        emailTextField.delegate = self
+    }
+}
+
+extension ViewCodeViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == emailTextField {
+            let maxLength = 150
+            let currentString: NSString = textField.text! as NSString
+            let newString: NSString =
+                currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+        }
+        return true
+    }
+    
+    func isValidEmail(email: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailPredicate.evaluate(with: email)
+    }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Erro", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func loginButtonTapped(_ sender: Any) {
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            return
+        }
+        
+        if !isValidEmail(email: email) {
+            showAlert(message: "E-mail inválido.")
+            return
+        }
+        
+        // Continuar com o processo de login
+    }
+}
+Nesse código, o método textField(_:shouldChangeCharactersIn:replacementString:) é implementado para permitir apenas
+
+
+
+
+Tiago Henrique Piantavinha
+agora poderia validar o campo senha para permitir apenas números e no máximo 10 caracteres
+Claro! Aqui está o código atualizado para validar o campo de senha para permitir apenas números e no máximo 10 caracteres:
+
+swift
+Copy code
+import UIKit
+
+class ViewCodeViewController: UIViewController {
+    
+    let emailTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Email"
+        textField.borderStyle = .roundedRect
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    let passwordTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Senha"
+        textField.borderStyle = .roundedRect
+        textField.isSecureTextEntry = true
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    let loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Login", for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 5.0
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .white
+        
+        view.addSubview(emailTextField)
+        view.addSubview(passwordTextField)
+        view.addSubview(loginButton)
+        
+        NSLayoutConstraint.activate([
+            emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emailTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50),
+            emailTextField.widthAnchor.constraint(equalToConstant: 250),
+            emailTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
+            passwordTextField.widthAnchor.constraint(equalToConstant: 250),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
+            loginButton.widthAnchor.constraint(equalToConstant: 250),
+            loginButton.heightAnchor.constraint(equalToConstant: 40),
+        ])
+        
+        // Adicionando validação dos campos
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+}
+
+extension ViewCodeViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == emailTextField {
+            let maxLength = 150
+            let currentString: NSString = textField.text! as NSString
+            let newString: NSString =
+                currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+        } else if textField == passwordTextField {
+            let maxLength = 10
+            let allowedCharacters = CharacterSet.decimalDigits
+            let characterSet = CharacterSet(charactersIn: string)
+            return newString.length <= maxLength && allowedCharacters.isSuperset(of: characterSet)
+        }
+        return true
+    }
+    
+    func isValidEmail(email: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailPredicate.evaluate(with: email)
+    }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Erro", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func loginButtonTapped(_ sender: Any) {
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            return
+        }
+        
+        if !isValidEmail(email:
+
+
+
+Tiago Henrique Piantavinha
+a função login buttontapped ficou incompleta, poderia repetir apenas ela
+Desculpe por isso! Aqui está a função loginButtonTapped completa:
+
+swift
+Copy code
+@IBAction func loginButtonTapped(_ sender: Any) {
+    guard let email = emailTextField.text, let password = passwordTextField.text else {
+        return
+    }
+    
+    if !isValidEmail(email: email) {
+        showAlert(message: "Email inválido.")
+        return
+    }
+    
+    if password.isEmpty {
+        showAlert(message: "Senha inválida.")
+        return
+    }
+    
+    if password.count > 10 {
+        showAlert(message: "Senha deve conter no máximo 10 caracteres.")
+        return
+    }
+    
+    // fazer a chamada para API de login aqui
+}
+Nessa função, estamos verificando se o email é válido e se a senha é válida e tem no máximo 10 caracteres. Se algo estiver errado, exibimos uma mensagem de alerta. Caso contrário, podemos fazer a chamada para API de login. Note que essa parte ainda precisa ser implementada.
+
+
+
+
+Tiago Henrique Piantavinha
+agora poderia fazer uma lógica para o botão de login ficar habilitado apenas se os campos de e-mail e senha estiverem preenchidos corretamente
+Sim, claro! Para habilitar o botão de login apenas se os campos de e-mail e senha estiverem preenchidos corretamente, você pode adicionar um método de atualização do botão de login que verifica o estado dos campos de texto e habilita ou desabilita o botão de login com base nisso. Aqui está o código atualizado com essa funcionalidade:
+
+swift
+Copy code
+import UIKit
+
+class ViewCodeViewController: UIViewController {
+    
+    let emailTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Email"
+        textField.borderStyle = .roundedRect
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    let passwordTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Senha"
+        textField.borderStyle = .roundedRect
+        textField.isSecureTextEntry = true
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    let loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Login", for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 5.0
+        button.isEnabled = false // Botão de login inicialmente desabilitado
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .white
+        
+        view.addSubview(emailTextField)
+        view.addSubview(passwordTextField)
+        view.addSubview(loginButton)
+        
+        NSLayoutConstraint.activate([
+            emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emailTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50),
+            emailTextField.widthAnchor.constraint(equalToConstant: 250),
+            emailTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
+            passwordTextField.widthAnchor.constraint(equalToConstant: 250),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
+            loginButton.widthAnchor.constraint(equalToConstant: 250),
+            loginButton.heightAnchor.constraint(equalToConstant: 40),
+        ])
+        
+        // Adicionando validação dos campos
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
+        // Atualizando o botão de login quando o texto do campo de texto é alterado
+        emailTextField.addTarget(self, action: #selector(updateLoginButton), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(updateLoginButton), for: .editingChanged)
+        
+        // Atualizando o botão de login inicialmente
+        updateLoginButton()
+    }
+    
+    @objc func updateLoginButton() {
+        let emailValid = isValidEmail(email: emailTextField.text ?? "")
+        let passwordValid = isValidPassword(password: passwordTextField.text ?? "")
+        loginButton.isEnabled = emailValid && passwordValid
+    }
+}
+
+extension ViewCodeViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == emailTextField {
+            let maxLength = 150
+            let currentString: NSString = textField.text! as NSString
+            let newString: NSString =
+                currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+        } else if textField == passwordTextField {
+            let maxLength = 10
+            let allowedCharacters = CharacterSet.decimalDigits
+            let characterSet = CharacterSet(charactersIn: string)
+            return newString.length <= maxLength
+
+
+
+Tiago Henrique Piantavinha
+poderia repetir o código a partir da extension pois ficou incompleto o código
+
+2 / 2
+
+Claro, me desculpe por isso. Aqui está o código completo, a partir da extensão UITextFieldDelegate:
+
+swift
+Copy code
+extension ViewCodeViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == emailTextField {
+            let maxLength = 150
+            let currentString: NSString = textField.text! as NSString
+            let newString: NSString =
+                currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength && isValidEmail(email: newString as String)
+        } else if textField == passwordTextField {
+            let maxLength = 10
+            let allowedCharacters = CharacterSet.decimalDigits
+            let characterSet = CharacterSet(charactersIn: string)
+            return newString.length <= maxLength && allowedCharacters.isSuperset(of: characterSet)
+        }
+        return true
+    }
+    
+    func isValidEmail(email: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailPredicate.evaluate(with: email)
+    }
+    
+    func isValidPassword(password: String) -> Bool {
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: password)
+        return allowedCharacters.isSuperset(of: characterSet) && password.count <= 10
+    }
+}
+Nessa extensão, estamos implementando a validação para o campo de e-mail e senha, bem como limitando o tamanho máximo da senha e permitindo apenas números. Também estamos atualizando o botão de login com base no estado atual dos campos de texto. Note que estamos retornando true no final da função textField(_:shouldChangeCharactersIn:replacementString:) para permitir que o texto seja alterado se nenhuma das condições dos if statements anteriores for satisfeita.
+
+
+
+
+Tiago Henrique Piantavinha
+Muito bom, seu código ficou ótimo agora vou testar ele e te dou um feedback
+Fico feliz em ajudar! Teste à vontade e qualquer dúvida ou problema adicional, é só me avisar. Estou sempre à disposição para ajudá-lo.
+
+
+
+
+Tiago Henrique Piantavinha
+Quando compilei a variável newString da função textField deu erro com a mensagem: Cannot find 'newString' in scope pode me ajudar?
+Me desculpe pelo erro, a variável newString não foi declarada na função textField(_:shouldChangeCharactersIn:replacementString:), por isso você está recebendo esse erro.
+
+Para corrigir isso, vamos declarar a variável newString em cada um dos blocos if statements. Aqui está o código corrigido:
+
+swift
+Copy code
+extension ViewCodeViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == emailTextField {
+            let maxLength = 150
+            let currentString: NSString = textField.text! as NSString
+            let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength && isValidEmail(email: newString as String)
+        } else if textField == passwordTextField {
+            let maxLength = 10
+            let allowedCharacters = CharacterSet.decimalDigits
+            let characterSet = CharacterSet(charactersIn: string)
+            let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+            return newString.length <= maxLength && allowedCharacters.isSuperset(of: characterSet)
+        }
+        return true
+    }
+    
+    func isValidEmail(email: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailPredicate.evaluate(with: email)
+    }
+    
+    func isValidPassword(password: String) -> Bool {
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: password)
+        return allowedCharacters.isSuperset(of: characterSet) && password.count <= 10
+    }
+}
+Agora o código deve compilar sem erros. Desculpe novamente pela confusão, e por favor, me avise se precisar de mais ajuda!
+
+
+
+
+Tiago Henrique Piantavinha
+Ocorreu outra falha na compilação agora com a mensagem: Value of type 'String' has no member 'length'
+Me desculpe novamente pelo erro! Esse erro ocorreu porque a propriedade length não existe em Swift. Em vez disso, usamos a propriedade count para contar o número de caracteres em uma string.
+
+Aqui está o código corrigido, substituindo length por count:
+
+swift
+Copy code
+extension ViewCodeViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == emailTextField {
+            let maxLength = 150
+            let currentString: NSString = textField.text! as NSString
+            let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength && isValidEmail(email: newString as String)
+        } else if textField == passwordTextField {
+            let maxLength = 10
+            let allowedCharacters = CharacterSet.decimalDigits
+            let characterSet = CharacterSet(charactersIn: string)
+            let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+            return newString.count <= maxLength && allowedCharacters.isSuperset(of: characterSet)
+        }
+        return true
+    }
+    
+    func isValidEmail(email: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailPredicate.evaluate(with: email)
+    }
+    
+    func isValidPassword(password: String) -> Bool {
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: password)
+        return allowedCharacters.isSuperset(of: characterSet) && password.count <= 10
+    }
+}
+Espero que isso ajude e não hesite em me avisar se você encontrar mais erros ou tiver outras perguntas!
+
+
+
+
+Tiago Henrique Piantavinha
+Muito bom o código compilou e abriu o simulador para teste, porém ao tentar digitar algo no campo não aparece nada
+Desculpe pela confusão! O problema pode ser que o teclado não esteja aparecendo quando você toca no campo de texto. Para exibir o teclado, você precisa definir o delegado do campo de texto como a visualização controladora e implementar o método viewDidAppear na classe ViewCodeViewController para definir o campo de texto como o primeiro respondedor.
+
+Aqui está o código atualizado que deve corrigir esse problema:
+
+swift
+Copy code
+import UIKit
+
+class ViewCodeViewController: UIViewController {
+    
+    private lazy var emailTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = "Email"
+        textField.borderStyle = .roundedRect
+        textField.keyboardType = .emailAddress
+        textField.delegate = self
+        return textField
+    }()
+    
+    private lazy var passwordTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = "Senha"
+        textField.borderStyle = .roundedRect
+        textField.isSecureTextEntry = true
+        textField.keyboardType = .numberPad
+        textField.delegate = self
+        return textField
+    }()
+    
+    private lazy var loginButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Login", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .gray
+        button.isEnabled = false
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        
+        view.addSubview(emailTextField)
+        view.addSubview(passwordTextField)
+        view.addSubview(loginButton)
+        
+        NSLayoutConstraint.activate([
+            emailTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
+            emailTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            emailTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            emailTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 16),
+            passwordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            passwordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 32),
+            loginButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            loginButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            loginButton.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        emailTextField.becomeFirstResponder()
+    }
+    
+    @objc private func loginButtonTapped() {
+        let alertController = UIAlertController(title: "Login", message: "Email: \(emailTextField.text ?? "")\nSenha: \(passwordTextField.text ?? "")", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension ViewCodeViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == emailTextField {
+            let maxLength = 150
+            let currentString: NSString = textField.text! as NSString
+            let newString: NSString = currentString.replacingCharacters(in: range
+
+
+
+Tiago Henrique Piantavinha
+realizei um debug via xcode e me parece que a função textField quando valida o campo emailTextField já devolve false sem eu ter terminado de digitar o e-mail
+Esse problema pode estar ocorrendo porque a validação do email está muito restrita. Para validar um email corretamente, você precisa usar uma expressão regular (regex). Aqui está um exemplo de como você pode usar uma regex para validar o email:
+
+swift
+Copy code
+func isValidEmail(_ email: String) -> Bool {
+    let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+    let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
+    return emailPredicate.evaluate(with: email)
+}
+Essa função isValidEmail verifica se o email fornecido corresponde ao padrão especificado pela expressão regular. Para usá-la, substitua a validação do campo de email na função textField(_:shouldChangeCharactersIn:replacementString:) pelo seguinte código:
+
+swift
+Copy code
+if textField == emailTextField {
+    let maxLength = 150
+    let currentString: NSString = textField.text! as NSString
+    let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+    let isValid = newString.length <= maxLength && isValidEmail(newString as String)
+    loginButton.isEnabled = isValid
+    return newString.length <= maxLength
+}
+Isso deve permitir que o usuário digite o email completo antes de validá-lo, e também verificar se o email digitado é válido. Espero que isso ajude!
+
+
+
+
+Tiago Henrique Piantavinha
+Agora poderia atualizar o código para permitir habilitar o botão de login apenas se os campos de e-mail e senha estiverem preenchidos
+Claro, para habilitar o botão de login apenas se os campos de e-mail e senha estiverem preenchidos, você pode atualizar a função textField(_:shouldChangeCharactersIn:replacementString:) da seguinte maneira:
+
+swift
+Copy code
+func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    if textField == emailTextField {
+        let maxLength = 150
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+        let isEmailValid = newString.length <= maxLength && isValidEmail(newString as String)
+        emailTextFieldValid = isEmailValid
+    } else if textField == passwordTextField {
+        let maxLength = 10
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+        let isPasswordValid = newString.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil && newString.length <= maxLength
+        passwordTextFieldValid = isPasswordValid
+    }
+    loginButton.isEnabled = emailTextFieldValid && passwordTextFieldValid
+    return true
+}
+Aqui, adicionamos duas variáveis booleanas emailTextFieldValid e passwordTextFieldValid, que indicam se o conteúdo de cada campo de texto é válido. Em seguida, atualizamos essas variáveis dentro da função textField(_:shouldChangeCharactersIn:replacementString:) com base no conteúdo de cada campo de texto. Finalmente, definimos a propriedade isEnabled do botão de login com base no valor dessas duas variáveis.
+
+Isso deve permitir que o botão de login seja habilitado apenas se os campos de e-mail e senha estiverem preenchidos corretamente.
+
+
+
+
+Tiago Henrique Piantavinha
+Apareceram as seguintes mensagens de erro: Cannot find 'emailTextFieldValid' in scope
+Desculpe-me pelo erro. Você precisa definir as variáveis emailTextFieldValid e passwordTextFieldValid fora do escopo da classe, mas dentro do escopo da View, como propriedades da classe. Por exemplo:
+
+swift
+Copy code
+class LoginView: UIView {
+    
+    private let emailTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Email"
+        textField.borderStyle = .roundedRect
+        textField.autocapitalizationType = .none
+        textField.keyboardType = .emailAddress
+        return textField
+    }()
+    
+    private let passwordTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Password"
+        textField.borderStyle = .roundedRect
+        textField.isSecureTextEntry = true
+        return textField
+    }()
+    
+    private let loginButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Login", for: .normal)
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        button.isEnabled = false // Inicialmente, o botão de login deve estar desabilitado
+        return button
+    }()
+    
+    private var emailTextFieldValid = false // Variável para armazenar se o conteúdo do campo de texto do email é válido
+    private var passwordTextFieldValid = false // Variável para armazenar se o conteúdo do campo de texto da senha é válido
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupView() {
+        // Configura a hierarquia da view e os constrains dos subviews
+    }
+    
+    // Implementação das funções para validação dos campos de texto
+    
+    @objc private func loginButtonTapped() {
+        // Implementação da ação de login
+    }
+    
+}
+Com essas alterações, o código deve compilar corretamente e permitir que o botão de login seja habilitado apenas se os campos de e-mail e senha estiverem preenchidos corretamente.
+
+
+
+
+Tiago Henrique Piantavinha
+Na validação do campo senha está gerando essa warning Comparing non-optional value of type 'NSRange' (aka '_NSRange') to 'nil' always returns false
+Aviso ocorre porque a variável range é uma NSRange, que é uma estrutura em C que não pode ser nula. Por padrão, quando você tenta comparar uma estrutura não opcional com nulo, o compilador emite um aviso.
+
+Para resolver esse aviso, você pode mudar a condição range == nil para range.location == NSNotFound. Por exemplo:
+
+swift
+Copy code
+func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    if textField == emailTextField {
+        // Implementação da validação do campo de texto do email
+    } else if textField == passwordTextField {
+        let newString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
+        if let newString = newString {
+            // Verifica se a nova string contém apenas números e se tem no máximo 10 caracteres
+            let isNumeric = CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: newString))
+            let maxLength = newString.count <= 10
+            
+            // Atualiza a validação do campo de senha
+            passwordTextFieldValid = isNumeric && maxLength
+            
+            // Habilita ou desabilita o botão de login com base na validação dos campos de texto
+            loginButton.isEnabled = emailTextFieldValid && passwordTextFieldValid
+        }
+    }
+    
+    return true
+}
+Com essa alteração, o aviso deve desaparecer e o código deve continuar funcionando corretamente.
+
+
+
+
+Tiago Henrique Piantavinha
+Acabei fazendo alguns ajustes, mas agora funcionou
+Que ótimo que você conseguiu fazer os ajustes e o código está funcionando! Fico feliz em poder ajudar. Se precisar de mais ajuda no futuro, não hesite em entrar em contato novamente. Estou sempre à disposição para ajudar.
+
+
+
+
+Tiago Henrique Piantavinha
+poderia apenas a me ajudar
+Claro, como posso ajudar? Por favor, descreva qual é a sua dúvida ou problema para que eu possa ajudá-lo da melhor forma possível.
+
+
+
+
+Tiago Henrique Piantavinha
+a trocar a cor do botão para azul quando desabilitado e verde quando habilitado
+Para trocar a cor do botão quando ele estiver habilitado ou desabilitado, você pode usar a propriedade backgroundColor do botão. Quando o botão estiver desabilitado, você pode definir a cor de fundo como azul e, quando estiver habilitado, pode definir a cor de fundo como verde.
+
+Aqui está um exemplo de como fazer isso:
+
+swift
+Copy code
+class LoginViewController: UIViewController {
+    
+    // Declaração dos campos de texto e botão de login
+    private let emailTextField = UITextField()
+    private let passwordTextField = UITextField()
+    private let loginButton = UIButton(type: .system)
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Configuração dos campos de texto e botão de login
+        
+        // Configuração do botão de login
+        loginButton.setTitle("Login", for: .normal)
+        loginButton.setTitleColor(.white, for: .normal)
+        loginButton.backgroundColor = .blue // Define a cor de fundo como azul
+        loginButton.isEnabled = false // Inicialmente o botão de login está desabilitado
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        
+        // Adição dos subviews à view principal
+        view.addSubview(emailTextField)
+        view.addSubview(passwordTextField)
+        view.addSubview(loginButton)
+        
+        // Configuração das constraints usando o ViewCode (não mostrado aqui)
+    }
+    
+    // Implementação da validação dos campos de texto e habilitação/desabilitação do botão de login
+    private var emailTextFieldValid: Bool = false {
+        didSet {
+            loginButton.isEnabled = emailTextFieldValid && passwordTextFieldValid
+            
+            // Define a cor de fundo do botão como azul se estiver desabilitado
+            if !loginButton.isEnabled {
+                loginButton.backgroundColor = .blue
+            }
+        }
+    }
+    
+    private var passwordTextFieldValid: Bool = false {
+        didSet {
+            loginButton.isEnabled = emailTextFieldValid && passwordTextFieldValid
+            
+            // Define a cor de fundo do botão como verde se estiver habilitado
+            if loginButton.isEnabled {
+                loginButton.backgroundColor = .green
+            }
+        }
+    }
+    
+    // Implementação da ação do botão de login
+    @objc private func loginButtonTapped() {
+        // Implementação da lógica de login
+    }
+    
+    // Implementação da validação do campo de texto do email
+    private func validateEmailTextField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let currentText = textField.text else { return false }
+        let newString = (currentText as NSString).replacingCharacters(in: range, with: string)
+        
+        // Implementação da validação do campo de texto do email
+        
+        return true
+    }
+    
+    // Implementação da validação do campo de texto da senha
+    private func validatePasswordTextField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let currentText = textField.text else { return false }
+        let newString = (currentText as NSString).replacingCharacters(in: range, with: string)
+        
+        // Implementação da validação do campo de texto da senha
+        
+        return true
+    }
+    
+}
+Observe que a cor de fundo do botão é definida na propriedade backgroundColor, e que a cor é alterada de acordo com o estado do botão na implementação das propriedades emailTextFieldValid e `passwordTextFieldValid
+
+
+
+
+Tiago Henrique Piantavinha
+poderia criar isso como uma única função
+Sim, podemos criar uma única função para atualizar a aparência do botão de login. Segue o código:
+
+swift
+Copy code
+private func updateLoginButtonAppearance() {
+    if emailTextFieldValid && passwordTextFieldValid {
+        loginButton.isEnabled = true
+        loginButton.backgroundColor = .green
+    } else {
+        loginButton.isEnabled = false
+        loginButton.backgroundColor = .blue
+    }
+}
+Essa função deve ser chamada sempre que houver alguma alteração nos campos de e-mail ou senha, ou seja, dentro das funções emailTextFieldDidChange e passwordTextFieldDidChange. E também pode ser chamada dentro da função viewDidLoad para definir o estado inicial do botão de login.
+
+
+
+
+Tiago Henrique Piantavinha
+como mudar para o campo de senha ao apertar o botão retorno do teclado
+Para fazer o teclado mudar o foco para o campo de senha quando o usuário pressionar o botão "return", é necessário implementar o método textFieldShouldReturn do protocolo UITextFieldDelegate. Segue o código:
+
+swift
+Copy code
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+            loginButtonTapped()
+        }
+        return true
+    }
+}
+Nesse código, verificamos qual foi o campo de texto que chamou o método textFieldShouldReturn. Se for o campo de e-mail, chamamos o método becomeFirstResponder() do campo de senha, o que faz o teclado mudar o foco para esse campo. Se for o campo de senha, chamamos o método resignFirstResponder() do campo de senha para esconder o teclado, e em seguida chamamos a função loginButtonTapped() para simular o clique no botão de login. Por fim, retornamos true para indicar que o evento "return" foi tratado.
+
+
+
+
+Tiago Henrique Piantavinha
+o teclado do campo senha não possui botão de retorno
+Se o campo de senha não possui o botão "return" no teclado, você pode adicioná-lo definindo a propriedade returnKeyType do campo de senha como .done. Por exemplo:
+
+swift
+Copy code
+passwordTextField.returnKeyType = .done
+Dessa forma, ao exibir o teclado para o campo de senha, o botão "return" será exibido como "Done". Quando o usuário tocar no botão "Done", o teclado será escondido.
+
+
+
+
+Tiago Henrique Piantavinha
+não apareceu o Done após
+Se mesmo definindo a propriedade returnKeyType como .done, o botão "Done" não apareceu no teclado do campo de senha, é possível que a propriedade keyboardType desse campo esteja definida para um valor que não permite a exibição desse botão.
+
+Para resolver isso, verifique se a propriedade keyboardType do campo de senha está definida como .numberPad. Se sim, mude essa propriedade para .asciiCapable para que o botão "Done" seja exibido. Exemplo:
+
+swift
+Copy code
+passwordTextField.keyboardType = .asciiCapable
+passwordTextField.returnKeyType = .done
+Lembre-se de adicionar essas linhas dentro do método viewDidLoad ou em outro local adequado do seu código.
+
+
+
+
+Tiago Henrique Piantavinha
+resolveu, mas gostaria que ficasse os números exibindo
+Para exibir os números digitados no campo de senha, você pode mudar a propriedade isSecureTextEntry do campo para false. Isso fará com que os caracteres digitados sejam exibidos na forma de texto normal.
+
+Para manter o limite de 10 caracteres no campo de senha e permitir apenas a entrada de números, você pode adicionar a seguinte extensão:
+
+swift
+Copy code
+extension LoginViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Limita o campo de senha a 10 caracteres
+        let currentText = textField.text ?? ""
+        guard let range = Range(range, in: currentText) else {
+            return false
+        }
+        let newText = currentText.replacingCharacters(in: range, with: string)
+        let numberOfChars = newText.count
+        if numberOfChars > 10 {
+            return false
+        }
+        
+        // Permite apenas a entrada de números
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
+    }
+}
+Em seguida, no método viewDidLoad, adicione a seguinte linha para mudar a propriedade isSecureTextEntry do campo de senha para false:
+
+swift
+Copy code
+passwordTextField.isSecureTextEntry = false
+Com isso, o campo de senha irá exibir os caracteres digitados como texto normal e irá limitar a entrada a apenas números.
+
+
+
+
+Tiago Henrique Piantavinha
+não gostaria que o teclado para o campo de senha, sejá número e possua a opção de concluir para o usuário
+Entendi, então para mudar o teclado do campo de senha para o padrão de texto e adicionar um botão "Concluir" no lugar do botão "Return", você pode definir a propriedade keyboardType do campo de senha para .default e a propriedade returnKeyType para .done no método viewDidLoad() da seguinte forma:
+
+swift
+Copy code
+passwordTextField.keyboardType = .default
+passwordTextField.returnKeyType = .done
+Em seguida, você pode implementar o método textFieldShouldReturn() da seguinte forma:
+
+swift
+Copy code
+func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if textField == emailTextField {
+        passwordTextField.becomeFirstResponder()
+    } else {
+        passwordTextField.resignFirstResponder()
+        loginButtonTapped()
+    }
+    return true
+}
+O método verifica se o campo ativo é o emailTextField e, em seguida, define o foco para o campo de senha passwordTextField. Se o campo ativo for o passwordTextField, o método simplesmente remove o foco do campo e chama o método loginButtonTapped() que você já implementou anteriormente.
+
+Com isso, o teclado do campo de senha será mudado para o padrão de texto e um botão "Concluir" será exibido em vez do botão "Return", permitindo que o usuário conclua a entrada de texto no campo de senha e inicie o processo de login.
+
+
